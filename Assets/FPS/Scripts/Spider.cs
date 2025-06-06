@@ -215,7 +215,7 @@ public class Spider : MonoBehaviour
         }
         if (animator != null)
         {
-            animator.SetFloat("Speed", Agent.velocity.magnitude);
+            //animator.SetFloat("Speed", Agent.velocity.magnitude);
         }
 
         if (player != null && Agent.enabled)

@@ -293,6 +293,8 @@ public class EnemySpawner : MonoBehaviour
 
     public Base baseTarget;
 
+    public Transform house;
+
     private void Start()
     {
         StartCoroutine(SpawnSpiderRoutine());
@@ -311,10 +313,7 @@ public class EnemySpawner : MonoBehaviour
     }
 
     public void SpawnEnemy(int level)
-
-
     {
-
         if (currentSpiderCount >= maxSpiders)
             return;
         Vector3 spawnPosition = GetRandomPointInArea();
@@ -332,10 +331,7 @@ public class EnemySpawner : MonoBehaviour
         }
 
         Spider newSpider = Instantiate(spiderPrefab, spawnPosition, Quaternion.identity);
-
-        
-
-
+        newSpider.GetComponent<NavAgentController>().follow = house;
         // Re-enable NavMeshAgent to force nav update
         NavMeshAgent agent = newSpider.GetComponent<NavMeshAgent>();
         if (agent != null)
@@ -345,9 +341,6 @@ public class EnemySpawner : MonoBehaviour
         }
 
     }
-
-
-
 
     private void OnSpiderDeath(Spider spider)
     {
