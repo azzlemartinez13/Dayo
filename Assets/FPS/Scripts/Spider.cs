@@ -48,7 +48,7 @@ public class Spider : MonoBehaviour
     //reference to health your currently targeting
     private HealthComponent targetHealth;
 
-    public NavMeshAgent Agent;
+    //public NavMeshAgent Agent;
     private Transform player;
     private bool playerInRange = false;
 
@@ -63,12 +63,12 @@ public class Spider : MonoBehaviour
         //currentHealth = maxHealth;
         currentHP = maxHP;
 
-        Agent = GetComponent<NavMeshAgent>();
-        Agent.speed = moveSpeed;
-        Agent.stoppingDistance = stoppingDistance;
-        Agent.updatePosition = true;
-        Agent.updateRotation = true;
-        Agent.angularSpeed = 120f;
+        //Agent = GetComponent<NavMeshAgent>();
+        //Agent.speed = moveSpeed;
+        //Agent.stoppingDistance = stoppingDistance;
+        //Agent.updatePosition = true;
+        //Agent.updateRotation = true;
+        //Agent.angularSpeed = 120f;
 
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
@@ -80,7 +80,7 @@ public class Spider : MonoBehaviour
             Debug.LogWarning("No object tagged 'Player' found.");
         }
 
-        Agent.SetDestination(player.position);
+        //Agent.SetDestination(player.position);
         animator = GetComponent<Animator>();
 
         //if (animator == null)
@@ -96,11 +96,11 @@ public class Spider : MonoBehaviour
         this.baseTarget = baseTarget;  // Set target reference
 
         this.spawner = spawner;
-        Agent = GetComponent<NavMeshAgent>();
-        Agent.enabled = true;
-        Agent.isStopped = false;
-        Agent.ResetPath();
-        Agent.SetDestination(player.position);
+        //Agent = GetComponent<NavMeshAgent>();
+        //Agent.enabled = true;
+        //Agent.isStopped = false;
+        //Agent.ResetPath();
+        //Agent.SetDestination(player.position);
 
         currentHP = maxHP;
 
@@ -121,13 +121,13 @@ public class Spider : MonoBehaviour
         if (playerObj != null)
         {
             player = playerObj.transform;
-            Agent.SetDestination(player.position);
+            //Agent.SetDestination(player.position);
             Debug.Log("Spider initialized and targeting player.");
         }
         else if (baseTarget != null)
         {
             player = baseTarget.transform; // fallback to base
-            Agent.SetDestination(baseTarget.transform.position);
+            //Agent.SetDestination(baseTarget.transform.position);
             Debug.LogWarning("No 'Player' found. Targeting base instead.");
 
         }
@@ -135,7 +135,7 @@ public class Spider : MonoBehaviour
         else if (wallObj != null)
         {
             player = baseTarget.transform; // fallback to base
-            Agent.SetDestination(baseTarget.transform.position);
+            //Agent.SetDestination(baseTarget.transform.position);
             Debug.LogWarning("No 'Player' found. Targeting wall instead.");
 
         }
@@ -205,35 +205,35 @@ public class Spider : MonoBehaviour
     void Update()
     {  //continuous attack with timer
 
-        if (!Agent.pathPending && Agent.remainingDistance > Agent.stoppingDistance)
-        {
-            if (!Agent.hasPath || Agent.velocity.sqrMagnitude == 0f)
-            {
-                if (player != null)
-                    Agent.SetDestination(player.position);
-            }
-        }
-        if (animator != null)
-        {
-            //animator.SetFloat("Speed", Agent.velocity.magnitude);
-        }
+        //if (!Agent.pathPending && Agent.remainingDistance > Agent.stoppingDistance)
+        //{
+        //    if (!Agent.hasPath || Agent.velocity.sqrMagnitude == 0f)
+        //    {
+        //        if (player != null)
+        //            Agent.SetDestination(player.position);
+        //    }
+        //}
+        //if (animator != null)
+        //{
+        //    //animator.SetFloat("Speed", Agent.velocity.magnitude);
+        //}
 
-        if (player != null && Agent.enabled)
-        {
+        //if (player != null && Agent.enabled)
+        //{
 
-            Agent.SetDestination(player.position);
+        //    Agent.SetDestination(player.position);
 
-            Vector3 direction = Agent.steeringTarget - transform.position;
-            direction.y = 0;
+        //    Vector3 direction = Agent.steeringTarget - transform.position;
+        //    direction.y = 0;
 
-            if (direction.sqrMagnitude > 0.01f)
-            {
-                Quaternion lookRotation = Quaternion.LookRotation(direction);
-                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, rotateSpeed * Time.deltaTime);
-            }
+        //    if (direction.sqrMagnitude > 0.01f)
+        //    {
+        //        Quaternion lookRotation = Quaternion.LookRotation(direction);
+        //        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, rotateSpeed * Time.deltaTime);
+        //    }
 
-            Debug.DrawLine(transform.position, Agent.steeringTarget, Color.green);
-        }
+        //    Debug.DrawLine(transform.position, Agent.steeringTarget, Color.green);
+        //}
 
         // Attack target if in range
         if (targetHealth != null)
@@ -358,11 +358,11 @@ public class Spider : MonoBehaviour
 
         playerInRange = false;
 
-        if (Agent != null)
-        {
-            Agent.enabled = true;
-            Agent.ResetPath();
-        }
+        //if (Agent != null)
+        //{
+        //    Agent.enabled = true;
+        //    Agent.ResetPath();
+        //}
 
     }
 }
