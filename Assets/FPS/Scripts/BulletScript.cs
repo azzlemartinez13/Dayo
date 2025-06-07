@@ -28,7 +28,7 @@ public class BulletScript : MonoBehaviour
             {
                 MaterialType materialType = spider.materialType;
 
-                //spider.TakeDamage(1f);
+           
 
                 switch (materialType)
                 {

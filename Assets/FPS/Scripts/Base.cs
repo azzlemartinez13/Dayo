@@ -8,12 +8,13 @@ public class Base : MonoBehaviour
     public float Health_Start;
 
     public float Health_Current;
+    [SerializeField] private BaseUI baseUI;
 
-    public int BaseUpgradges;
+    //public int BaseUpgradges;
 
-    public int RepairmenAmount;
+    //public int RepairmenAmount;
 
-    public int HitmenAmount;
+    //public int HitmenAmount;
 
     public event Action OnHealthChanged;
 
@@ -26,6 +27,10 @@ public class Base : MonoBehaviour
  
     private void Start()
     {
+       baseUI = FindObjectOfType<BaseUI>(); // Ensure this is assigned before use
+                                                 
+
+
         ResetBase();
     }
 
@@ -45,16 +50,11 @@ public class Base : MonoBehaviour
         }
     }
 
-    public void BuyUpgrade()
+    public void RestoreHealth(float amount)
     {
-        BaseUpgradges++;
-        Health_Current = Health_Start + (float)(BaseUpgradges * 100);
-        this.OnHealthChanged?.Invoke();
+        Health_Current = Mathf.Min(Health_Current + amount, Health_Start);
+        OnHealthChanged?.Invoke();
     }
 
-    public void Repair(float amount)
-    {
-        Health_Current = Mathf.Min(Health_Start + (float)(BaseUpgradges * 100), Health_Current + 50f);
-        this.OnHealthChanged?.Invoke();
-    }
+
 }

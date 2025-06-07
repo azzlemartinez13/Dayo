@@ -55,15 +55,20 @@ public class GunInventory : MonoBehaviour {
 
 	}
 
+    //public void RestoreAmmo(int amount)
+    //{
+    //    currentAmmo = Mathf.Min(currentAmmo + amount, maxAmmo);
+    //    UpdateUI();
+    //}
 
-	/*
+    /*
 	 * Grabing the icons from the Resources/Weapo_Icons/ -> gun name of the image.
 	 * (!!!!!!!1!READ IMPORTANT) 
 	 * the weapon image to respond the weapon must have the same name as the WEAPON  with the extension _img.
 	 * So if the gun prefab is called "Sniper_Piper" the corresponding image must be located in the location form previous,
 	 * with the name "Sniper_Piper_img".
 	 */
-	IEnumerator UpdateIconsFromResources(){
+    IEnumerator UpdateIconsFromResources(){
 		yield return new WaitForEndOfFrame ();
 
 		icons = new Texture[gunsIHave.Count];

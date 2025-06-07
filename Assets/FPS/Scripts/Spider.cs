@@ -236,17 +236,33 @@ public class Spider : MonoBehaviour
         //}
 
         // Attack target if in range
+        //if (targetHealth != null)
+        //{
+        //    attackTimer += Time.deltaTime;
+
+        //    if (attackTimer >= attackSpeed)
+        //    {
+        //        targetHealth.TakeDamage(attackDamage);
+        //        Debug.Log($"Spider dealt {attackDamage} damage to target!");
+        //        attackTimer = 0f;
+        //    }
+        //}
+
         if (targetHealth != null)
         {
             attackTimer += Time.deltaTime;
-
             if (attackTimer >= attackSpeed)
             {
                 targetHealth.TakeDamage(attackDamage);
+                ScoreManager.Instance?.AddPoint();
+                LootManager.Instance?.DropLoot(targetHealth.transform.position);
+
                 Debug.Log($"Spider dealt {attackDamage} damage to target!");
                 attackTimer = 0f;
             }
         }
+
+
     }
 
 
