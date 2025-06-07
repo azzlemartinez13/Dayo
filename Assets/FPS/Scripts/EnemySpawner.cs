@@ -276,12 +276,19 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
+
+
+
 public class EnemySpawner : MonoBehaviour
 {
     [Header("Spawner Settings")]
     public Spider spiderPrefab;              // Assign your Spider prefab here
     public int maxSpiders = 10;              // Max number of spiders in scene
     public float spawnInterval = 5f;         // Time between spawns
+
+    [Header("Attack Settings")]
+    [SerializeField] private float attackSpeed = 1f;
+    [SerializeField] private int attackDamage = 10;
 
     [Header("Spawn Area")]
     public Vector3 spawnAreaCenter;
@@ -290,15 +297,23 @@ public class EnemySpawner : MonoBehaviour
     private int currentSpiderCount = 0;
 
     public int TotalEnemies;
-
     public Base baseTarget;
-
+    public int Level;
     public Transform house;
+    private Transform player;
+
+
+    public HealthComponent healthComponent;
+
+
 
     private void Start()
     {
+     
         StartCoroutine(SpawnSpiderRoutine());
     }
+
+
 
     private IEnumerator SpawnSpiderRoutine()
     {
@@ -365,6 +380,5 @@ public class EnemySpawner : MonoBehaviour
         Gizmos.DrawWireCube(spawnAreaCenter, spawnAreaSize);
     }
 }
-
 
 

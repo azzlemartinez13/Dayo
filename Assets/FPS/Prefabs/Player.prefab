@@ -141,9 +141,9 @@ Transform:
   m_GameObject: {fileID: 154458}
   serializedVersion: 2
   m_LocalRotation: {x: -0.007648006, y: 0.026813969, z: 0.009894984, w: 0.99956226}
-  m_LocalPosition: {x: -0.311, y: -0.13, z: 0.307}
+  m_LocalPosition: {x: -0.26, y: -0.13, z: 0.307}
   m_LocalScale: {x: 0.008939618, y: 0.0089396145, z: 0.0089396145}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 431846}
   m_LocalEulerAnglesHint: {x: -0.906, y: 3.064, z: 1.11}
@@ -228,6 +228,7 @@ GameObject:
   - component: {fileID: 11478776}
   - component: {fileID: 11414154}
   - component: {fileID: 6442471277890685633}
+  - component: {fileID: 8103541394384897535}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -449,6 +450,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21147fd5080be2348918bb1b2e1f9cae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8103541394384897535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42562c3eee911dd45997415e66b12613, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Game: {fileID: 0}
+  MaxHealth: 100
+  CurrentHealth: 0
+  materialType: 3
+  woodHitSound: {fileID: 0}
+  metalHitSound: {fileID: 0}
+  characterHitSound: {fileID: 8401134737432978211}
 --- !u!1 &196378
 GameObject:
   m_ObjectHideFlags: 0

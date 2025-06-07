@@ -3,20 +3,23 @@ using UnityEngine;
 
 public class HealthComponent : MonoBehaviour
 {
-
     public GameController Game;
-
-    public float MaxHealth = 100f;
-
+    public float MaxHealth;
     public float CurrentHealth;
 
     public event Action<HealthComponent> OnDeath;
-
     public event Action<float> OnDamageTaken;
+
+    public MaterialType materialType;
+
+    [Header("Hit Sounds")]
+    public AudioSource woodHitSound;
+    public AudioSource metalHitSound;
+    public AudioSource characterHitSound;
 
     private void Awake()
     {
-        CurrentHealth = MaxHealth;
+        ResetHealth();
     }
 
     public void ResetHealth()
@@ -27,11 +30,19 @@ public class HealthComponent : MonoBehaviour
     public void TakeDamage(int damage)
     {
         CurrentHealth -= damage;
-        this.OnDamageTaken?.Invoke(damage);
+        OnDamageTaken?.Invoke(damage);
+
+        switch (materialType)
+        {
+            case MaterialType.Wood: woodHitSound?.Play(); break;
+            case MaterialType.Metal: metalHitSound?.Play(); break;
+            case MaterialType.Skin: characterHitSound?.Play(); break;
+        }
+
         if (CurrentHealth <= 0f)
         {
-            this.OnDeath?.Invoke(this);
-            Game.GameLost();
+            OnDeath?.Invoke(this);
+            Game?.GameLost();
         }
     }
 }

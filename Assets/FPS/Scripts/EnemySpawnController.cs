@@ -167,7 +167,7 @@ public class EnemySpawnController : MonoBehaviour
             for (int i = 0; i < enemyCount; i++)
             {
                 Spawner.SpawnEnemy(enemyLevel);
-                
+
                 yield return new WaitForSeconds(spawnInterval);
             }
 

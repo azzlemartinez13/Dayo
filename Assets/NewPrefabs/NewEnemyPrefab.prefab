@@ -412,6 +412,7 @@ MonoBehaviour:
   agent: {fileID: 5602999144817691562}
   insectController: {fileID: 5602004933214765322}
   follow: {fileID: 0}
+  follow1: {fileID: 0}
 --- !u!114 &5605316360994437776
 MonoBehaviour:
   m_ObjectHideFlags: 0

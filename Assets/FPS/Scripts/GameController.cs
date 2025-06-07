@@ -3,9 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    public EnemySpawnController EnemySpawnController;
+    //public EnemySpawnController EnemySpawnController;
 
-  
+
     [SerializeField]
     private GameObject _win_ParticleSystemGO;
 

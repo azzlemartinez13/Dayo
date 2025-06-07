@@ -54,7 +54,7 @@ public class Spider : MonoBehaviour
 
     Animator animator;
 
-  
+
     public event Action<Spider> OnDeath;
 
     void Start()
@@ -137,7 +137,7 @@ public class Spider : MonoBehaviour
             player = baseTarget.transform; // fallback to base
             Agent.SetDestination(baseTarget.transform.position);
             Debug.LogWarning("No 'Player' found. Targeting wall instead.");
-            
+
         }
         else
         {
@@ -222,7 +222,7 @@ public class Spider : MonoBehaviour
         {
 
             Agent.SetDestination(player.position);
-      
+
             Vector3 direction = Agent.steeringTarget - transform.position;
             direction.y = 0;
 
@@ -265,7 +265,7 @@ public class Spider : MonoBehaviour
 
             if (targetHealth == null)
             {
-               
+
                 Debug.LogWarning("No HealthComponent found on target.");
             }
 
@@ -291,7 +291,7 @@ public class Spider : MonoBehaviour
         {
             if (targetHealth != null && targetHealth.gameObject == other.gameObject)
             {
-               
+
                 targetHealth = null;
                 Debug.Log("Spider stopped attacking target.");
             }
@@ -320,16 +320,16 @@ public class Spider : MonoBehaviour
             DestroyObject();
         }
 
-            // Play hit sound based on material type
-            switch (materialType)
-            {
-                case MaterialType.Wood: woodHitSound?.Play(); break;
-                case MaterialType.Metal: metalHitSound?.Play(); break;
-                case MaterialType.Skin: characterHitSound?.Play(); break;
-            }
-
+        // Play hit sound based on material type
+        switch (materialType)
+        {
+            case MaterialType.Wood: woodHitSound?.Play(); break;
+            case MaterialType.Metal: metalHitSound?.Play(); break;
+            case MaterialType.Skin: characterHitSound?.Play(); break;
         }
-    
+
+    }
+
 
 
     private void DestroyObject()
@@ -338,9 +338,9 @@ public class Spider : MonoBehaviour
 
         if (destructionSound != null)
         {
-                destructionSound.Play();
+            destructionSound.Play();
         }
-        
+
         if (smallExplosionEffect != null)
         {
             Instantiate(smallExplosionEffect, transform.position, transform.rotation);
@@ -354,7 +354,7 @@ public class Spider : MonoBehaviour
     {
         currentHP = maxHP;
 
-     
+
 
         playerInRange = false;
 

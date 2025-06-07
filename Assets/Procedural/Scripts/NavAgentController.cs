@@ -11,6 +11,7 @@ public class NavAgentController : MonoBehaviour
     public IKInsectController insectController;
 
     public Transform follow;
+    public Transform follow1;
 
     void Start()
     {
