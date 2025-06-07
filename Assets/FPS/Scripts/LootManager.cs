@@ -26,5 +26,8 @@ public class LootManager : MonoBehaviour
         // Optionally position near target location in screen space
         Vector3 screenPos = Camera.main.WorldToScreenPoint(worldPosition);
         loot.GetComponent<RectTransform>().position = screenPos;
+
+        // Automatically destroy loot UI element after 2 seconds
+        Destroy(loot, 2f);
     }
 }

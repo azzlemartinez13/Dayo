@@ -11,7 +11,7 @@ public class Spider : MonoBehaviour
 {
 
     public int Level;
-    public Base Base;
+    [SerializeField] public Base Base;
     private EnemySpawner spawner;
 
     private bool isInitialized = false;
@@ -333,6 +333,10 @@ public class Spider : MonoBehaviour
 
         if (currentHP <= 0)
         {
+
+            // Call loot drop BEFORE destroy
+            FindObjectOfType<LootManager>().DropLoot(transform.position);
+
             DestroyObject();
         }
 

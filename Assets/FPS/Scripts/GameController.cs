@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    //public EnemySpawnController EnemySpawnController;
+    public EnemySpawnController EnemySpawnController;
 
 
     [SerializeField]
@@ -14,6 +14,8 @@ public class GameController : MonoBehaviour
 
     [SerializeField]
     private GameObject _loseUIGO;
+
+    AudioManager audioManager;
 
     public void GameWon()
     {
@@ -32,7 +34,21 @@ public class GameController : MonoBehaviour
 
     public void GoToMenu()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("Menu");
+        audioManager.PlaySFX(audioManager.ClickClip);
     }
 
+    public void PlayGame()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("MainScene");
+        audioManager.PlaySFX(audioManager.ClickClip);
+    }
+
+    public void QuitGame()
+    {
+        //Debug.Log("Quitting Game...");
+        Application.Quit();
+    }
 }

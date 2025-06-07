@@ -4,7 +4,7 @@ public class PauseGame : MonoBehaviour
 {
     private BackgroundMusic backgroundMusicScript;
     private AudioSource backgroundMusicAudioSource;
-
+    [SerializeField] private GameObject pauseMenuUI;
     private bool isPaused = false;
 
     private void Start()
@@ -33,12 +33,30 @@ public class PauseGame : MonoBehaviour
         }
     }
 
+    //public void TogglePause()
+    //{
+    //    isPaused = !isPaused;
+    //    Time.timeScale = isPaused ? 0 : 1;
+
+    //    if (pauseMenuUI != null)
+    //    {
+    //        pauseMenuUI.SetActive(isPaused);
+    //    }
+
+    //    //Debug.Log(isPaused ? "Game Paused" : "Game Resumed");
+    //}
+
     private void PauseGameplay()
     {
         Time.timeScale = 0;
         if (backgroundMusicAudioSource != null)
         {
             backgroundMusicAudioSource.Pause();
+        }
+
+        if (pauseMenuUI != null)
+        {
+            pauseMenuUI.SetActive(true);
         }
     }
 
@@ -48,6 +66,11 @@ public class PauseGame : MonoBehaviour
         if (backgroundMusicAudioSource != null)
         {
             backgroundMusicAudioSource.UnPause();
+        }
+
+        if (pauseMenuUI != null)
+        {
+            pauseMenuUI.SetActive(false);
         }
     }
 

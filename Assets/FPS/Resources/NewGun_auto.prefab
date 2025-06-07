@@ -2335,13 +2335,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageTable: {fileID: 3090991411048201779}
   currentWeaponType: 1
+  currentAmmo: 0
+  maxAmmo: 0
   currentStyle: 1
   mls: {fileID: 0}
   walkingSpeed: 3
   runningSpeed: 5
-  bulletsIHave: 9999
-  bulletsInTheGun: 80
-  amountOfBulletsPerLoad: 80
+  bulletsIHave: 100
+  bulletsInTheGun: 10
+  amountOfBulletsPerLoad: 10
   currentGunPosition: {x: 0, y: 0, z: 0}
   restPlacePosition: {x: -0.07, y: -0.06, z: 0.42}
   aimPlacePosition: {x: 0, y: -0.03, z: 0.3}

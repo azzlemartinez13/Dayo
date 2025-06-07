@@ -19,8 +19,19 @@ public WeaponType currentWeaponType;
 
 
 
+    public void RestoreAmmo(int amount)
+    {
+        bulletsInTheGun = Mathf.Min(bulletsInTheGun + amount, bulletsIHave);
+        UpdateUI();
+    }
 
-private int damage; //Damage dealt by a weapon
+    private void UpdateUI()
+    {
+        // Optional: Update your UI with new ammo values
+        Debug.Log("Ammo: " + bulletsInTheGun + "/" + bulletsIHave);
+    }
+
+    private int damage; //Damage dealt by a weapon
 	[Tooltip("Selects type of waepon to shoot rapidly or one bullet per click.")]
 	public GunStyles currentStyle;
 	[HideInInspector]
@@ -263,7 +274,7 @@ private int damage; //Damage dealt by a weapon
 	}
 
 
-	private Vector3 velV;
+    private Vector3 velV;
 	[HideInInspector]
 	public Transform mainCamera;
 	private Camera secondCamera;
