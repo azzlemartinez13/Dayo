@@ -8319,16 +8319,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e27921ed19e59a479708c197da4ec52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spiderPrefab: {fileID: 5605316360994437776, guid: d58d8e86454935144b47008f1b27a8aa, type: 3}
-  maxSpiders: 20
-  spawnInterval: 2
+  spiderPrefab1: {fileID: 5605316360994437776, guid: d58d8e86454935144b47008f1b27a8aa, type: 3}
+  maxSpiders: 10
+  spawnInterval: 5
   attackSpeed: 1
   attackDamage: 10
-  spawnAreaCenter: {x: -2.45, y: 7.8, z: 27.9}
-  spawnAreaSize: {x: 10, y: 0, z: 10}
+  spawnAreaCenter: {x: 0.7, y: 8.41, z: -18.04}
+  spawnAreaSize: {x: 15.5, y: 0, z: 12.3}
   TotalEnemies: 10
   baseTarget: {fileID: 6392638629823046262}
-  Level: 0
+  Level: 1
   house: {fileID: 1041405886}
   healthComponent: {fileID: 0}
 --- !u!1001 &238608822
@@ -35290,7 +35290,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1036371953}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1156295864}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: GoToMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 114521431}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlaySFX
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: b67164c172b43df49af12d94351df108, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1036371953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40246,6 +40270,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c3da3357c2cb444a91a87a487f9e7ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1156295863
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1156295865}
+  - component: {fileID: 1156295864}
+  m_Layer: 0
+  m_Name: GameController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1156295864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156295863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3a825ca0bdb73f4db9a4277391b4050, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _win_ParticleSystemGO: {fileID: 0}
+  _winUIGO: {fileID: 0}
+  _loseUIGO: {fileID: 0}
+--- !u!4 &1156295865
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156295863}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 463, y: 260.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1157311502
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -58130,7 +58201,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1628458459}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1156295864}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: QuitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 114521431}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlaySFX
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: b67164c172b43df49af12d94351df108, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1628458459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85817,3 +85912,4 @@ SceneRoots:
   - {fileID: 1960871505}
   - {fileID: 219518060}
   - {fileID: 490946714}
+  - {fileID: 1156295865}
