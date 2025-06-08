@@ -46,7 +46,8 @@ public class Spider : MonoBehaviour
     public HealthComponent healthComponent;
 
     //reference to health your currently targeting
-    private HealthComponent targetHealth;
+    private Base targetHealth;
+    private HealthComponent healtH;
 
     //public NavMeshAgent Agent;
     private Transform player;
@@ -248,16 +249,13 @@ public class Spider : MonoBehaviour
         //    }
         //}
 
-        if (targetHealth != null)
+        if (baseTarget != null && playerInRange)
         {
             attackTimer += Time.deltaTime;
             if (attackTimer >= attackSpeed)
             {
-                targetHealth.TakeDamage(attackDamage);
-                ScoreManager.Instance?.AddPoint();
-                LootManager.Instance?.DropLoot(targetHealth.transform.position);
-
-                Debug.Log($"Spider dealt {attackDamage} damage to target!");
+                baseTarget.TakeDamage(attackDamage);
+                Debug.Log($"Spider dealt {attackDamage} damage to base!");
                 attackTimer = 0f;
             }
         }
@@ -276,27 +274,19 @@ public class Spider : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Wall") || other.CompareTag("Base") || other.CompareTag("Player"))
+        if (other.CompareTag("Base"))
         {
-            targetHealth = other.GetComponent<HealthComponent>();
-
-            if (targetHealth == null)
-            {
-
-                Debug.LogWarning("No HealthComponent found on target.");
-            }
-
-            Debug.Log("Spider started attacking target.");
-        }
-
-        if (other.CompareTag("Player"))
-        {
+            baseTarget = other.GetComponent<Base>();
             playerInRange = true;
-        }
 
-        if (other.TryGetComponent<Base>(out Base b))
-        {
-            baseTarget = b;
+            if (baseTarget == null)
+            {
+                Debug.LogWarning("No Base component found on Base-tagged object.");
+            }
+            else
+            {
+                Debug.Log("Spider started attacking base.");
+            }
         }
     }
 
@@ -314,6 +304,8 @@ public class Spider : MonoBehaviour
             }
         }
 
+  
+
         if (other.CompareTag("Player"))
         {
             playerInRange = false;
@@ -327,17 +319,19 @@ public class Spider : MonoBehaviour
 
 
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, GameObject damageDealer)
     {
-
         currentHP -= damage;
+
+        // ? Only add score if damage came from player or player bullet
+        if ((damageDealer.CompareTag("Player") || damageDealer.CompareTag("PlayerBullet")) && currentHP <= 0)
+        {
+            ScoreManager.Instance?.AddPoint();
+            FindObjectOfType<LootManager>().DropLoot(transform.position);
+        }
 
         if (currentHP <= 0)
         {
-
-            // Call loot drop BEFORE destroy
-            FindObjectOfType<LootManager>().DropLoot(transform.position);
-
             DestroyObject();
         }
 
@@ -348,7 +342,6 @@ public class Spider : MonoBehaviour
             case MaterialType.Metal: metalHitSound?.Play(); break;
             case MaterialType.Skin: characterHitSound?.Play(); break;
         }
-
     }
 
 

@@ -5,31 +5,34 @@ public class Base : MonoBehaviour
 {
     public GameController Game;
 
-    public float Health_Start;
-
+    public float Health_Start = 100f;
     public float Health_Current;
+
     [SerializeField] private BaseUI baseUI;
 
-    //public int BaseUpgradges;
-
-    //public int RepairmenAmount;
-
-    //public int HitmenAmount;
-
     public event Action OnHealthChanged;
-
 
     private void Awake()
     {
         Health_Current = Health_Start;
     }
 
- 
     private void Start()
     {
-       baseUI = FindObjectOfType<BaseUI>(); // Ensure this is assigned before use
-                                                 
+        if (baseUI == null)
+        {
+            baseUI = FindObjectOfType<BaseUI>();
+        }
 
+        if (baseUI != null)
+        {
+            OnHealthChanged += baseUI.UpdateHealthUI;
+            baseUI.SetBase(this);
+        }
+        else
+        {
+            Debug.LogError("BaseUI not found in scene.");
+        }
 
         ResetBase();
     }
@@ -37,16 +40,17 @@ public class Base : MonoBehaviour
     public void ResetBase()
     {
         Health_Current = Health_Start;
-        this.OnHealthChanged?.Invoke();
+        OnHealthChanged?.Invoke();
     }
 
     public void TakeDamage(int damage)
     {
         Health_Current = Mathf.Max(Health_Current - damage, 0f);
-        this.OnHealthChanged?.Invoke();
+        OnHealthChanged?.Invoke();
+
         if (Health_Current == 0f)
         {
-            Game.GameLost();
+            Game?.GameLost();
         }
     }
 
@@ -55,6 +59,4 @@ public class Base : MonoBehaviour
         Health_Current = Mathf.Min(Health_Current + amount, Health_Start);
         OnHealthChanged?.Invoke();
     }
-
-
 }

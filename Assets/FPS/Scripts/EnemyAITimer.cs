@@ -32,6 +32,8 @@ public class EnemyAITimer : MonoBehaviour
         // Optional: Play effects/sounds here
         Debug.Log($"Spider {gameObject.name} timed out and is being despawned.");
 
-        _spider.TakeDamage((int)_spider.currentHP + 1); // Force death
+        //_spider.TakeDamage((int)_spider.currentHP + 1); // ? Missing damageDealer
+
+        _spider.TakeDamage((int)_spider.currentHP + 1, gameObject); // Pass spider itself as damage dealer
     }
 }

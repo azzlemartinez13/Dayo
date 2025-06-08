@@ -3,7 +3,10 @@ using UnityEngine.UI;
 using System.Collections;
 using TMPro; // Import TextMesh Pro
 public class HealthUI : MonoBehaviour
+
 {
+    public static HealthUI Instance { get; private set; } // ? Add this line
+
     public Slider slider;
     public Gradient gradient;
     public Image fill;
@@ -12,6 +15,19 @@ public class HealthUI : MonoBehaviour
 
 
     private HealthComponent healthComponent;
+
+    private void Awake()
+    {
+        // Singleton pattern setup
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+    }
+
 
     private void Start()
     {

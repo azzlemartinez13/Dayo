@@ -7,6 +7,8 @@ public class HealthComponent : MonoBehaviour
     public int MaxHealth;
     public int CurrentHealth;
 
+    [SerializeField] private bool isPlayer;
+
     public event Action<HealthComponent> OnDeath;
     public event Action<float> OnDamageTaken;
 
@@ -18,6 +20,8 @@ public class HealthComponent : MonoBehaviour
     public AudioSource characterHitSound;
 
     public HealthUI healthUI;
+    [SerializeField] private BaseUI baseUI;
+
 
     //private void Awake()
     //{
@@ -39,6 +43,7 @@ public class HealthComponent : MonoBehaviour
         healthUI.SetMaxHealth(MaxHealth); // Now this is safe to use
         healthUI.SetMaxHealth(CurrentHealth); // Now this is safe to use
 
+
         //buttonManager = FindObjectOfType<ButtonManager>();
 
 
@@ -53,8 +58,11 @@ public class HealthComponent : MonoBehaviour
     public void TakeDamage(int damage)
     {
         CurrentHealth -= damage;
-        OnDamageTaken?.Invoke(damage);
-
+        //OnDamageTaken?.Invoke(damage);
+if (isPlayer && HealthUI.Instance != null)
+{
+    HealthUI.Instance.SetHealth(CurrentHealth);
+}
         switch (materialType)
         {
             case MaterialType.Wood: woodHitSound?.Play(); break;

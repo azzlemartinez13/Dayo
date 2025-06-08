@@ -487,8 +487,9 @@ private void ShootMethod()
                         damage = 10;
                     }
 
-                    spider.TakeDamage(damage);
-                }
+                        // Pass damage and damage dealer (probably this gun or bullet GameObject)
+                        spider.TakeDamage(damage, gameObject);
+                    }
             }
 
             RecoilMath();

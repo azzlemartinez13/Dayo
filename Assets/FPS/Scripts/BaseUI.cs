@@ -1,55 +1,35 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro; // Import TextMesh Pro
+using TMPro;
 
 public class BaseUI : MonoBehaviour
 {
-    [SerializeField]
-    private Slider _baseHP_Slider;
+    [SerializeField] private Slider healthSlider;
+    [SerializeField] private TMP_Text healthText;
 
-    [SerializeField]
-    private TextMeshProUGUI _baseHP_TMP;
-
-    [SerializeField]
     private Base _base;
 
-    private void Awake()
+    public void SetBase(Base baseRef)
     {
-        _baseHP_Slider.maxValue = _base.Health_Start;
-        _baseHP_Slider.value = _base.Health_Current;
+        _base = baseRef;
+
+        if (_base != null)
+        {
+            UpdateHealthUI(); // Initialize UI on start
+        }
     }
 
-    private void OnEnable()
+    public void UpdateHealthUI()
+{
+    if (_base == null) return;
+
+    float ratio = _base.Health_Current / _base.Health_Start;
+    healthSlider.value = ratio;
+
+    if (healthText != null)
     {
-        _base.OnHealthChanged += UpdateBaseUI;
-
-        // Immediately update UI when enabled
-        UpdateBaseUI();
+        healthText.text = $" {_base.Health_Current}/{_base.Health_Start}";
+        Debug.Log($"Base UI updated: {_base.Health_Current} HP remaining.");
     }
-
-    private void Start()
-    {
-        // Just in case anything changes after Start, force UI sync
-        UpdateBaseUI();
-    }
-
-
-
-    private void OnDisable()
-    {
-        _base.OnHealthChanged -= UpdateBaseUI;
-    }
-
-
-
-    private void UpdateBaseUI()
-    {
-        _baseHP_TMP.text = $"{_base.Health_Current}/{_base.Health_Start}";
-        _baseHP_Slider.value = _base.Health_Current;
-    }
-
-  
-
-
+}
 }
