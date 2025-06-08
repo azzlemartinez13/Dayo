@@ -14,15 +14,24 @@ public class BaseUI : MonoBehaviour
     [SerializeField]
     private Base _base;
 
-    private void Awake()
-    {
-        _baseHP_Slider.maxValue = _base.Health_Start;
-        _baseHP_Slider.value = _base.Health_Current;
-    }
+    //private void Awake()
+    //{
+    //    _baseHP_Slider.maxValue = _base.Health_Start;
+    //    _baseHP_Slider.value = _base.Health_Current;
+    //}
 
     private void OnEnable()
     {
         _base.OnHealthChanged += UpdateBaseUI;
+
+        // Immediately update UI when enabled
+        UpdateBaseUI();
+    }
+
+    private void Start()
+    {
+        // Just in case anything changes after Start, force UI sync
+        UpdateBaseUI();
     }
 
     private void OnDisable()

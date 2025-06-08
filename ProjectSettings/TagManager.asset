@@ -12,6 +12,7 @@ TagManager:
   - Spider
   - Base
   - Wall
+  - Audio
   layers:
   - Default
   - TransparentFX

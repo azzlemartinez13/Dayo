@@ -8,11 +8,11 @@ public class PickupItem : MonoBehaviour
     public int healthRestoreAmount = 20;
     public int ammoAmount = 15;
 
-    private AudioManager audioManager;
+    //private AudioManager audioManager;
 
     private void Awake()
     {
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        //audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -35,8 +35,8 @@ public class PickupItem : MonoBehaviour
             gun.RestoreAmmo(ammoAmount);
         }
 
-        if (audioManager != null)
-            audioManager.PlaySFX(audioManager.ItemPickUpClip);
+        //if (audioManager != null)
+        //    audioManager.PlaySFX(audioManager.ItemPickUpClip);
 
         Destroy(gameObject);
     }
