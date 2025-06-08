@@ -51,7 +51,7 @@ GameObject:
   - component: {fileID: 1371149227729151332}
   - component: {fileID: 5605316360994437776}
   m_Layer: 7
-  m_Name: Enemy0
+  m_Name: Enemy0 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -429,7 +429,7 @@ MonoBehaviour:
   Base: {fileID: 0}
   moveSpeed: 3.5
   maxHP: 1
-  currentHP: 1
+  currentHP: 0
   stoppingDistance: 0
   rotateSpeed: 5
   attackSpeed: 1
