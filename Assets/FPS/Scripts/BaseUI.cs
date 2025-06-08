@@ -20,16 +20,15 @@ public class BaseUI : MonoBehaviour
     }
 
     public void UpdateHealthUI()
-{
-    if (_base == null) return;
-
-    float ratio = _base.Health_Current / _base.Health_Start;
-    healthSlider.value = ratio;
-
-    if (healthText != null)
     {
-        healthText.text = $" {_base.Health_Current}/{_base.Health_Start}";
-        Debug.Log($"Base UI updated: {_base.Health_Current} HP remaining.");
+        if (_base == null) return;
+
+        healthSlider.value = _base.Health_Current;
+
+        if (healthText != null)
+        {
+            healthText.text = $" {_base.Health_Current}/{_base.Health_Start}";
+            Debug.Log($"Base UI updated: {_base.Health_Current} HP remaining.");
+        }
     }
-}
 }

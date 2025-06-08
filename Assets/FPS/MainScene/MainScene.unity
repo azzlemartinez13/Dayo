@@ -55830,7 +55830,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1557499446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85121,7 +85121,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6392638629823046260}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac85e09f0ce99034d931dd712b12edb1, type: 3}
   m_Name: 
@@ -85157,7 +85157,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 14.19544, y: 3.06153, z: 10.550583}
+  m_Size: {x: 20, y: 3.06153, z: 12.14}
   m_Center: {x: 0.21905208, y: 1.030765, z: -0.033394814}
 --- !u!114 &6392638629823046266
 MonoBehaviour:
@@ -85166,7 +85166,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6392638629823046260}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 42562c3eee911dd45997415e66b12613, type: 3}
   m_Name: 

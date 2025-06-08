@@ -18,6 +18,7 @@ public class ScoreManager : MonoBehaviour
     public void AddPoint()
     {
         Score++;
+        Debug.Log(Score);
         if (scoreText != null)
             scoreText.text = $"Score: {Score}";
     }
